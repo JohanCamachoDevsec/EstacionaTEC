@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EstacionaTEC - Sistema de Reportes de Estacionamiento</title>
+    <meta name="description" content="Sistema de reportes para infracciones de estacionamiento en el Instituto Tecnológico de Culiacán" />
+    <meta name="author" content="Instituto Tecnológico de Culiacán" />
+
+    <meta property="og:title" content="EstacionaTEC - Sistema de Reportes" />
+    <meta property="og:description" content="Sistema de reportes para infracciones de estacionamiento en el Instituto Tecnológico de Culiacán" />
+    <meta property="og:type" content="website" />
+      <!-- ========== FAVICON IMPLEMENTATION START ========== -->
+
+      <!-- Fallback universale -->
+      <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon">
+
+      <!-- PNG per tab classiche -->
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+
+      <!-- SVG + dark/light -->
+      <link rel="icon" href="/favicons/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+      <link rel="icon" href="/favicons/favicon-dark.svg"  type="image/svg+xml" media="(prefers-color-scheme: dark)">
+
+      <!-- Apple Touch Icons (tutte le dimensioni per diversi dispositivi) -->
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+
+      <!-- Android/Chrome Icons -->
+      <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192.png">
+      <link rel="icon" type="image/png" sizes="512x512" href="/favicons/android-chrome-512.png">
+      <link rel="icon" type="image/png" sizes="144x144" href="/favicons/android-icon-144x144.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="/favicons/android-icon-96x96.png">
+      <link rel="icon" type="image/png" sizes="72x72" href="/favicons/android-icon-72x72.png">
+      <link rel="icon" type="image/png" sizes="48x48" href="/favicons/android-icon-48x48.png">
+      <link rel="icon" type="image/png" sizes="36x36" href="/favicons/android-icon-36x36.png">
+
+      <!-- Microsoft Tiles -->
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+      <meta name="msapplication-square70x70logo" content="/favicons/ms-icon-70x70.png">
+      <meta name="msapplication-square150x150logo" content="/favicons/ms-icon-150x150.png">
+      <meta name="msapplication-wide310x150logo" content="/favicons/ms-icon-310x310.png">
+      <meta name="msapplication-square310x310logo" content="/favicons/ms-icon-310x310.png">
+      <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+
+      <!-- Safari pinned tab (SVG monocromatico nero) -->
+      <link rel="mask-icon" href="/favicons/pinned-tab.svg" color="#5bbad5">
+
+      <!-- PWA -->
+      <link rel="manifest" href="/favicons/site.webmanifest">
+
+      <!-- UI del browser -->
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)">
+      <meta name="color-scheme" content="light dark">
+
+      <!-- ========== FAVICON IMPLEMENTATION END ========== -->
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('Service Worker registrado con éxito: ', registration.scope);
+                }, function(err) {
+                    console.log('Fallo al registrar Service Worker: ', err);
+                });
+            });
+        }
+    </script>
+  </body>
+</html>

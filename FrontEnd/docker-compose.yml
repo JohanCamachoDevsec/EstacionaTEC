@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    container_name: EstacionaTECFrontend
+    restart: always
+    ports:
+      - "3000:3000"

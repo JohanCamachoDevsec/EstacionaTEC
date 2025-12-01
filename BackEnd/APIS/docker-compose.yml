@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  api-placas:
+    image: lector-placas-api
+    container_name: api-placas
+    ports:
+      - "8000:8000"
+    restart: always
