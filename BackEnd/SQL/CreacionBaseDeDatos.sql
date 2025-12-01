@@ -285,3 +285,64 @@ BEGIN
   END IF;
 END;
 $$;
+
+------------------------------------------------------------
+-- FUNCIÓN: notificar_strike_email
+-- Envía correo cuando un reporte pasa a estatus "aprobado"
+------------------------------------------------------------
+CREATE OR REPLACE FUNCTION notificar_strike_email()
+RETURNS TRIGGER AS $$
+DECLARE
+  v_correo_usuario TEXT;
+  v_resend_api_key TEXT := 're_Qh325JJE_EpNCMmk94f53ZaSKTWS3DsTR';
+  v_asunto TEXT := '⚠️ Reporte Aprobado - Aviso de Strike';
+  v_mensaje TEXT;
+  v_motivo TEXT;
+BEGIN
+  IF (OLD.estatus IS DISTINCT FROM 'aprobado') AND (NEW.estatus = 'aprobado') THEN
+
+    SELECT correo INTO v_correo_usuario
+    FROM usuarios
+    WHERE id_usuario = NEW.id_usuario_infractor;
+
+    v_motivo := COALESCE(NEW.comentarios, 'Sin comentarios adicionales');
+
+    IF v_correo_usuario IS NOT NULL THEN
+
+        v_mensaje := '<strong>Hola.</strong><br>' ||
+                     'Tu reporte sobre el vehículo <strong>' || NEW.texto_placa_ingresado || '</strong> ha sido aprobado.<br>' ||
+                     '<strong>Motivo/Comentarios:</strong> ' || v_motivo || '<br><br>' ||
+                     'Se ha sumado un strike a tu cuenta. Evita futuras infracciones.';
+
+        PERFORM net.http_post(
+            url := 'https://api.resend.com/emails',
+            headers := jsonb_build_object(
+                'Content-Type', 'application/json',
+                'Authorization', 'Bearer ' || v_resend_api_key
+            ),
+            body := jsonb_build_object(
+                'from', 'Johan Dev <no-reply@johandevsec.com>',
+                'to', v_correo_usuario,
+                'subject', v_asunto,
+                'html', v_mensaje
+            )
+        );
+    END IF;
+
+  END IF;
+
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+------------------------------------------------------------
+-- TRIGGER: trigger_enviar_email_reporte
+-- Llama a la función después de actualizar un reporte
+------------------------------------------------------------
+DROP TRIGGER IF EXISTS trigger_enviar_email_reporte ON public.reportes;
+
+CREATE TRIGGER trigger_enviar_email_reporte
+AFTER UPDATE ON public.reportes
+FOR EACH ROW
+EXECUTE FUNCTION notificar_strike_email();
+

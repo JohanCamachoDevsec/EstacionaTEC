@@ -21,7 +21,7 @@ Se conecta a Supabase para autenticación, almacenamiento de datos y llamadas a 
 ### Backend
 
 Implementación lógica del lado del servidor.
-Incluye microservicios en Python para lectura automática de placas, así como las funciones, triggers y lógica dentro de Supabase (PostgreSQL).
+Incluye microservicios en Python para lectura automática de placas, así como las funciones, triggers y lógica(sitema de strikes y  envio de correos de aviso) dentro de Supabase (PostgreSQL).
 
 ### Data
 

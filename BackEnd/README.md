@@ -32,6 +32,7 @@ Incluye:
 * Triggers automáticos que actualizan strikes y estatus de acceso.
 * Funciones RPC como `empatar_reporte_con_vehiculo` y `aprobar_reporte`.
 * Script principal para clonar la base de datos en un nuevo proyecto Supabase.
+* ademas se le envia el reporte al usuario si el reporte fue aprobado 
 
 Este directorio permite replicar fácilmente la base de datos para desarrollo, pruebas o despliegue.
 
