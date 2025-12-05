@@ -60,3 +60,4 @@ Facilitar el proceso de reporte de estacionamientos mal utilizados dentro del Te
 * Generar strikes de forma automática
 * cambiar el estatus de acceso cuando se superan los límites definidos
 * Mantener un historial completo de reportes y revisiones
+a
