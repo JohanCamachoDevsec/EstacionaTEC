@@ -30,7 +30,7 @@ jobs:
           file: ./Frontend/Dockerfile
           push: true
           tags: |
-            ghcr.io/JohanCamachoDevsec/estacionatec-frontend:latest
+            ghcr.io/johancamachodevsec/estacionatec-frontend:latest
 
       - name: Build & push backend
         uses: docker/build-push-action@v6
@@ -39,4 +39,4 @@ jobs:
           file: ./BackEnd/APIS/Dockerfile
           push: true
           tags: |
-            ghcr.io/JohanCamachoDevsec/estacionatec-backend:latest
+            ghcr.io/johancamachodevsec/estacionatec-backend:latest
