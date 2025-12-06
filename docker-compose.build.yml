@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    image: estacionatec-frontend:latest
+
+  backend:
+    build:
+      context: ./BackEnd/APIS
+      dockerfile: Dockerfile
+    image: estacionatec-backend:latest
