@@ -23,7 +23,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build & push frontend
+      - name: Build & push frontEnd
         uses: docker/build-push-action@v6
         with:
           context: ./Frontend
