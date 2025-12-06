@@ -3,7 +3,7 @@ version: "3.9"
 services:
   frontend:
     build:
-      context: ./Frontend
+      context: ./FrontEnd
       dockerfile: Dockerfile
     image: estacionatec-frontend:latest
 
